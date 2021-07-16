@@ -1,0 +1,96 @@
+.logo-section {
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.logo-section img {
+  height: 80px;
+}
+.navbar-section ul {
+  list-style: none;
+  padding: 9px 0;
+  margin-left: 28px;
+}
+.navbar-section ul li {
+  display: inline-block;
+  padding-left: 10px;
+}
+.navbar-section {
+  background: black;
+}
+.navbar-section ul li a {
+  text-decoration: none;
+  color: #fafafa;
+  font-size: 17px;
+  transition: 0.3s ease-in-out;
+  padding: 8px;
+}
+.navbar-section ul li a:hover {
+  background: #d3d3d3;
+  color: #000000;
+  position: relative;
+  bottom: 1px;
+}
+
+.search-product-section {
+  background: #272727;
+  padding: 20px;
+  overflow-x: hidden;
+  position: relative;
+  bottom: 17px;
+}
+.need-margin {
+  width: 83%;
+  margin: 0 auto;
+  display: flex;
+}
+.need-margin input:focus {
+  border: 2px solid goldenrod;
+  border-radius: 3px;
+}
+
+.need-margin input {
+  width: 98%;
+  outline: none;
+  font-size: 17px;
+  padding: 3px 2px;
+}
+.need-margin span a {
+  display: inline-block;
+  color: #fafafa;
+  font-size: 23px;
+  margin-left: 10px;
+  position: relative;
+  bottom: 2px;
+}
+
+@media screen and (max-width: 440px) {
+  .navbar-section ul li a {
+    text-decoration: none;
+    color: #fafafa;
+    font-size: 14px;
+    transition: 0.3s ease-in-out;
+    padding: 8px;
+  }
+  .navbar-section ul li {
+    display: inline-block;
+    padding-left: 10px;
+  }
+  .navbar-section ul {
+    list-style: none;
+    padding: 9px 0;
+    margin-left: 10px;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+p.counter {
+  position: relative;
+  left: 7px;
+  font-size: 14px;
+  font-weight: 600;
+  color: goldenrod;
+}

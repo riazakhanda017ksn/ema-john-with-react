@@ -1,0 +1,58 @@
+.text-center.order-caption p {
+  font-weight: 400;
+  color: #313131cf;
+  font-size: 16px;
+}
+.the-list-of-price-name ul {
+  list-style: none;
+  padding: 0;
+}
+.the-list-of-price-name ul li {
+  font-size: 12px;
+  font-weight: 500;
+}
+.pricing-academy {
+  display: flex;
+}
+
+span.need-customize {
+  color: #ca0202;
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  position: relative;
+  bottom: 18px;
+}
+.pricing-gap {
+  margin-left: 20px;
+}
+@media screen and (max-width: 900px) {
+  .pricing-gap {
+    margin-left: 1px !important;
+  }
+  span.need-customize {
+    color: #ca0202;
+    display: inline-block;
+    font-size: 7px;
+    font-weight: 500;
+    position: relative;
+    bottom: 17px;
+  }
+  .the-list-of-price-name ul li {
+    font-size: 6px!important;
+    font-weight: 600;
+  }
+  .order-caption h5 {
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .text-center.order-caption p {
+    font-weight: 400;
+    color: #313131cf;
+    font-size: 11px;
+  }
+  .the-list-of-price-name ul li {
+    font-size: 8px;
+    font-weight: 600;
+  }
+}

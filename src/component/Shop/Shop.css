@@ -1,0 +1,20 @@
+.shop-container {
+  padding: 0 11px;
+  display: flex;
+  width: 100%;
+}
+
+.products-items {
+  width: 70%;
+  margin-left: 218px !important;
+  margin-right: 15px;
+  border-right: 1px solid #ddd;
+}
+@media screen and (max-width: 990px) {
+  .products-items {
+    width: 70%;
+    margin-left: 0 !important;
+    margin-right: 15px;
+    border-right: 1px solid #ddd;
+  }
+}
