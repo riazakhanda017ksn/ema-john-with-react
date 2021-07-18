@@ -21,10 +21,29 @@ span.need-customize {
   font-size: 13px;
   font-weight: 700;
   position: relative;
-  bottom: 18px;
 }
 .pricing-gap {
   margin-left: 20px;
+}
+
+.need-perfect-position {
+  position: fixed;
+  right: 9px;
+}
+
+.button-section a button {
+  position: relative;
+  bottom: 27px;
+  width: 100%;
+  background: goldenrod;
+  color: black;
+  font-size: 13px;
+  padding: 3px;
+  display: inline-block;
+  border: 1px solid #3a3a3a61;
+  border-radius: 3px;
+  outline: none;
+  left: 2px;
 }
 @media screen and (max-width: 900px) {
   .pricing-gap {
@@ -36,10 +55,9 @@ span.need-customize {
     font-size: 7px;
     font-weight: 500;
     position: relative;
-    bottom: 17px;
   }
   .the-list-of-price-name ul li {
-    font-size: 6px!important;
+    font-size: 6px !important;
     font-weight: 600;
   }
   .order-caption h5 {
@@ -54,5 +72,23 @@ span.need-customize {
   .the-list-of-price-name ul li {
     font-size: 8px;
     font-weight: 600;
+  }
+  .need-perfect-position {
+    position: fixed;
+    right: 12px;
+  }
+
+  .button-section a button {
+    position: relative;
+    bottom: 27px;
+    width: 100%;
+    background: goldenrod;
+    color: black;
+    font-size: 13px;
+    padding: 3px;
+    display: inline-block;
+    border: 1px solid #3a3a3a61;
+    border-radius: 3px;
+    outline: none;
   }
 }

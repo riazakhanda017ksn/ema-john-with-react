@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import logo from "../../resource/ema-john-simple-resources-master/ema-john-simple-resources-master/images/logo.png";
 import "./Header.css";
 
@@ -11,13 +12,13 @@ const Header = () => {
       <div className="navbar-section">
         <ul>
           <li>
-            <a href="">Shop </a>
+            <Link to="/shop">Shop</Link>
           </li>
           <li>
-            <a href=""> Order Review</a>
+            <Link to="/review">Order Review</Link>
           </li>
           <li>
-            <a href=""> Manage Inventory here</a>
+            <Link to="/inventory">Manage Inventory here</Link>
           </li>
         </ul>
       </div>

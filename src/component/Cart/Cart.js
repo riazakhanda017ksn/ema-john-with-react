@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Cart.css";
 const Cart = (props) => {
   ///total-cost
@@ -6,7 +7,7 @@ const Cart = (props) => {
   let total = 0;
   for (let i = 0; i < cart.length; i++) {
     const product = cart[i];
-    total = total + product.price;
+    total = total + product.price * product.quantity;
   }
   ///shipping
   let shipping = 0;
@@ -31,8 +32,8 @@ const Cart = (props) => {
   };
 
   return (
-    <>
-      <div className="text-center order-caption">
+    <div className="need-perfect-position">
+      <div className="text-center order-caption ">
         <h5>Order Summary</h5>
         <p>Items ordered:{props.cart.length}</p>
       </div>
@@ -42,19 +43,29 @@ const Cart = (props) => {
             <li>Items</li>
             <li>Shipping Cost</li>
             <li>Tax + VAT</li>
+            <li>
+              <span className="need-customize">Order Total</span>
+            </li>
           </ul>
-          <span className="need-customize">Order Total:</span>
         </div>
         <div className="the-list-of-price-name pricing-gap">
           <ul>
             <li>: $ {formatNumber(total)}</li>
             <li>: $ {formatNumber(shipping)}</li>
             <li>: $ {tax}</li>
+            <li>
+              <span className="need-customize">: $ {grandTotal}</span>{" "}
+            </li>{" "}
           </ul>
-          <span className="need-customize">: $ {grandTotal}</span>
+          <br />
         </div>
       </div>
-    </>
+      <div className="button-section">
+        <Link to="/review">
+          <button>Replace Order</button>{" "}
+        </Link>
+      </div>
+    </div>
   );
 };
 
