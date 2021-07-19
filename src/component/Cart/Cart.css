@@ -31,7 +31,7 @@ span.need-customize {
   right: 9px;
 }
 
-.button-section a button {
+.custom {
   position: relative;
   bottom: 27px;
   width: 100%;
@@ -78,7 +78,7 @@ span.need-customize {
     right: 12px;
   }
 
-  .button-section a button {
+  .custom {
     position: relative;
     bottom: 27px;
     width: 100%;
