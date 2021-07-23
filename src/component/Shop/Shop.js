@@ -22,12 +22,12 @@ const Shop = () => {
     const productKeys = Object.keys(saveCart);
     const previousCart = productKeys.map((existingKey) => {
       const products = fakeData.find((pd) => pd.key === existingKey);
-      console.log(existingKey, saveCart[existingKey]);
+      // console.log(existingKey, saveCart[existingKey]);
       products.quantity = saveCart[existingKey];
       return products;
     });
     setCart(previousCart);
-  });
+  }, [0]);
   const handleProduct = (product) => {
     let toBeAdded = product.key;
     const sameProduct = cart.find((pd) => pd.key === toBeAdded);

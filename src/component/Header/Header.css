@@ -10,6 +10,7 @@
   list-style: none;
   padding: 9px 0;
   margin-left: 28px;
+  margin: 0;
 }
 .navbar-section ul li {
   display: inline-block;
@@ -37,7 +38,6 @@
   padding: 20px;
   overflow-x: hidden;
   position: relative;
-  bottom: 17px;
 }
 .need-margin {
   width: 83%;
@@ -93,4 +93,20 @@ p.counter {
   font-size: 14px;
   font-weight: 600;
   color: goldenrod;
+}
+.need-flex-for-nav {
+  background: black;
+  display: flex;
+  justify-content: space-between;
+}
+.signOut-section button {
+  background: none;
+  border: none;
+  padding: 2px;
+  margin-top: 5px;
+  padding-right: 28px;
+}
+.signOut-section button a {
+  text-decoration: none;
+  color: #fbb60b;
 }
