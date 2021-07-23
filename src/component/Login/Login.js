@@ -1,179 +1,254 @@
-import React, { useState } from "react";
-import { useContext } from "react";
+import firebase from "firebase/app";
+import "firebase/auth";
+import { useContext, useState } from "react";
+import { useHistory, useLocation } from "react-router";
 import { UserContext } from "../../App";
-import "./Login.css";
-import { useHistory, useLocation } from "react-router-dom";
+import { Form, Button } from "react-bootstrap";
+import firebaseConfig from "./firebase.config";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  initializeLoginFramework,
-  handleGoogleSignIn,
-  handleSignOut,
-  handleFbSignIn,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from "./loginManager";
-import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
+import "./Login.css";
 
-function Login() {
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
+
+const Login = () => {
+  const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+  let history = useHistory();
+  let location = useLocation();
+  let { from } = location.state || { from: { pathname: "/" } };
   const [newUser, setNewUser] = useState(false);
   const [user, setUser] = useState({
     isSignedIn: false,
-    name: "",
+    displayName: "",
     email: "",
+    photoURL: "",
+    name: "",
     password: "",
-    photo: "",
+    confirm_password: "",
+    error: "",
+    success: false,
   });
+  console.log(user);
+  const googleProvider = new firebase.auth.GoogleAuthProvider();
+  const fbProvider = new firebase.auth.FacebookAuthProvider();
 
-  initializeLoginFramework();
-
-  const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-  const history = useHistory();
-  const location = useLocation();
-  let { from } = location.state || { from: { pathname: "/" } };
-
+  // for google signIn
   const googleSignIn = () => {
-    handleGoogleSignIn().then((res) => {
-      handleResponse(res, true);
-    });
+    firebase
+      .auth()
+      .signInWithPopup(googleProvider)
+      .then((res) => {
+        const { displayName, email, photoURL } = res.user;
+        const signedInUser = {
+          isSignedIn: true,
+          displayName: displayName,
+          email: email,
+          photoURL: photoURL,
+        };
+        setUser(signedInUser);
+        setLoggedInUser(signedInUser);
+        history.replace(from);
+      });
   };
 
-  // const fbSignIn = () => {
-  //   handleFbSignIn().then((res) => {
-  //     handleResponse(res, true);
-  //   });
-  // };
+  console.log(user);
 
-  const signOut = () => {
-    handleSignOut().then((res) => {
-      handleResponse(res, false);
-    });
-  };
-
-  const handleResponse = (res, redirect) => {
-    setUser(res);
-    setLoggedInUser(res);
-    if (redirect) {
-      history.replace(from);
-    }
-  };
-
-  const handleBlur = (e) => {
+  const handleBlur = (event) => {
     let isFieldValid = true;
-    if (e.target.name === "email") {
-      isFieldValid = /\S+@\S+\.\S+/.test(e.target.value);
+    if (event.target.name === "email") {
+      isFieldValid = /\S+@\S+\.\S+/.test(event.target.value);
     }
-    if (e.target.name === "password") {
-      const isPasswordValid = e.target.value.length > 6;
-      const passwordHasNumber = /\d{1}/.test(e.target.value);
-      isFieldValid = isPasswordValid && passwordHasNumber;
+    if (event.target.name === "password") {
+      isFieldValid = /^(?=.*\d)(?=.*[a-z])[0-9a-zA-Z]{6,20}$/.test(
+        event.target.value
+      );
+    }
+    if (event.target.name === "confirm_password") {
+      isFieldValid = /^(?=.*\d)(?=.*[a-z])[0-9a-zA-Z]{6,20}$/.test(
+        event.target.value
+      );
     }
     if (isFieldValid) {
       const newUserInfo = { ...user };
-      newUserInfo[e.target.name] = e.target.value;
+      newUserInfo[event.target.name] = event.target.value;
       setUser(newUserInfo);
     }
   };
   const handleSubmit = (e) => {
     if (newUser && user.email && user.password) {
-      createUserWithEmailAndPassword(user.name, user.email, user.password).then(
-        (res) => {
-          handleResponse(res, true);
-        }
-      );
+      if (user.password !== user.confirm_password) {
+        const newUserInfo = { ...user };
+        newUserInfo.error = "Password did not match : Please try again...";
+        setUser(newUserInfo);
+      } else {
+        firebase
+          .auth()
+          .createUserWithEmailAndPassword(user.email, user.password)
+          .then((res) => {
+            const errorMessage = "";
+            const newUserInfo = { ...user };
+            newUserInfo.error = errorMessage;
+            newUserInfo.success = true;
+            setUser(newUserInfo);
+            console.log(errorMessage);
+            console.log(user.name);
+            updateUserName(user.name);
+            setLoggedInUser(newUserInfo);
+            history.replace(from);
+          })
+          .catch((error) => {
+            const errorMessage = error.message;
+            const newUserInfo = { ...user };
+            newUserInfo.error = errorMessage;
+            newUserInfo.success = false;
+            setUser(newUserInfo);
+            console.log(errorMessage);
+          });
+      }
     }
-
     if (!newUser && user.email && user.password) {
-      signInWithEmailAndPassword(user.email, user.password).then((res) => {
-        handleResponse(res, true);
-      });
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(user.email, user.password)
+        .then((res) => {
+          // Signed in
+          const errorMessage = "";
+          const newUserInfo = { ...user };
+          newUserInfo.error = errorMessage;
+          newUserInfo.success = true;
+          console.log(newUserInfo);
+          setUser(newUserInfo);
+          console.log("sign in user info ", res.user);
+          setLoggedInUser(newUserInfo);
+          history.replace(from);
+        })
+        .catch((error) => {
+          const errorMessage = error.message;
+          const newUserInfo = { ...user };
+          newUserInfo.error = "SignUp First !! Please try again...";
+          newUserInfo.success = false;
+          setUser(newUserInfo);
+          console.log(errorMessage);
+        });
     }
     e.preventDefault();
   };
-
+  const updateUserName = (name) => {
+    console.log(name);
+    const user = firebase.auth().currentUser;
+    user
+      .updateProfile({
+        displayName: name,
+      })
+      .then(function () {
+        console.log("Update successful.");
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+  console.log(user.displayName);
   return (
-    <div className="row">
-      <div className="col-lg-6">
-        <div className="email-with-password">
-          <div className="new-user px-3">
-            {newUser ? (
-              <h3>Create An Account</h3>
-            ) : (
-              <h3 className="position-need">Log In</h3>
-            )}
-          </div>
-          <form onSubmit={handleSubmit}>
-            {newUser && (
+    <>
+      <div className="row">
+        <div className="col-lg-6">
+          <div className="email-with-password">
+            <div className="new-user px-3">
+              {newUser ? (
+                <h3>Create An Account</h3>
+              ) : (
+                <h3 className="position-need">Log In</h3>
+              )}
+            </div>
+            <form onSubmit={handleSubmit}>
+              {newUser && (
+                <input
+                  type="text"
+                  name="name"
+                  onBlur={handleBlur}
+                  onFocus={handleBlur}
+                  placeholder="Your Name"
+                  required
+                />
+              )}
+              <br />
               <input
-                name="name"
-                type="text"
+                type="email"
+                name="email"
                 onBlur={handleBlur}
-                placeholder="Your name"
+                onFocus={handleBlur}
+                placeholder="Email"
+                required
               />
-            )}
-            <br />
-            <input
-              type="text"
-              name="email"
-              onBlur={handleBlur}
-              placeholder="Your Email address"
-              required
-            />
-            <br />
-            <input
-              type="password"
-              name="password"
-              onBlur={handleBlur}
-              placeholder="Your Password"
-              required
-            />
-            <br />
+              <br />
+              <input
+                type="password"
+                name="password"
+                onBlur={handleBlur}
+                placeholder="Password"
+                required
+              />
+              <br />
+              {newUser && (
+                <input
+                  type="password"
+                  name="confirm_password"
+                  onBlur={handleBlur}
+                  placeholder="Confirm Password"
+                  required
+                />
+              )}
+              <br />
 
-            <button type="submit">{newUser ? "Sign up" : "Sign In"}</button>
-          </form>
-          {newUser ? (
-            <div className="need-flex">
-              <div className="caption">
-                <p> already Have an Account</p>
+              <button type="submit">{newUser ? "Sign up" : "Sign In"}</button>
+            </form>
+            {newUser ? (
+              <div className="need-flex">
+                <div className="caption">
+                  <p> already Have an Account</p>
+                </div>
+                <div className="create-an-account">
+                  <p onClick={() => setNewUser(!newUser)}>Log In </p>
+                </div>
               </div>
-              <div className="create-an-account">
-                <p onClick={() => setNewUser(!newUser)}>Log In </p>
+            ) : (
+              <div className="need-flex">
+                <div className="caption">
+                  <p>If you are new to the site </p>
+                </div>
+                <div className="create-an-account">
+                  <p onClick={() => setNewUser(!newUser)}>Create An Account</p>
+                </div>
               </div>
-            </div>
-          ) : (
-            <div className="need-flex">
-              <div className="caption">
-                <p>If you are new to the site </p>
-              </div>
-              <div className="create-an-account">
-                <p onClick={() => setNewUser(!newUser)}>Create An Account</p>
-              </div>
-            </div>
-          )}
-          <p style={{ color: "red" }}>{user.error}</p>
-          {user.success && (
-            <p style={{ color: "green" }}>
-              User {newUser ? "created" : "Logged In"} successfully
-            </p>
-          )}
+            )}
+            <p style={{ color: "red" }}>{user.error}</p>
+            {user.success && (
+              <p style={{ color: "green" }}>
+                User {newUser ? "created" : "Logged In"} successfully
+              </p>
+            )}
+          </div>
         </div>
-      </div>
-      <div className="col-lg-6">
-        <div className="sign-in">
-          <div onClick={googleSignIn} className="google-sign-in">
-            <div className="logo">
-              <span>
-                {" "}
-                <FontAwesomeIcon icon={faGoogle} />
-              </span>
-            </div>
-            <div className="title">
-              <h3>Sign In With Google</h3>
+        <div className="col-lg-6">
+          <div className="sign-in">
+            <div onClick={googleSignIn} className="google-sign-in">
+              <div className="logo">
+                <span>
+                  {" "}
+                  <FontAwesomeIcon icon={faGoogle} />
+                </span>
+              </div>
+              <div className="title">
+                <h3>Sign In With Google</h3>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
-}
+};
 
 export default Login;

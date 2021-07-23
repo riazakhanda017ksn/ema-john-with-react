@@ -1,8 +1,7 @@
 .sign-in {
   background: url(../../img/jon-ly-Xn7GvimQrk8-unsplash.jpg) no-repeat;
   background-size: cover;
-  padding: 231px 0;
-  height: 100vh;
+  padding: 310px 0;
   background-position: center 40%;
   position: relative;
   text-align: center;
@@ -170,4 +169,46 @@
   padding: 11px 8px;
   position: relative;
   top: 0px;
+}
+
+@media screen and (max-width: 440px) {
+  .title h3 {
+    margin-top: 11px;
+    color: #fafafa;
+    font-size: 18px;
+    line-height: 39px;
+    position: relative;
+    right: 16px;
+  }
+  .logo span {
+    position: relative;
+    font-size: 28px;
+    padding: 10px;
+    color: white;
+    margin-left: 1px !important;
+    line-height: 58px;
+  }
+  .create-an-account p {
+    font-size: 11px;
+    font-weight: 400;
+    text-transform: capitalize;
+    cursor: pointer;
+    color: rgb(189, 3, 96);
+    border-bottom: 1px solid rgb(187, 0, 72);
+  }
+  .caption p {
+    font-size: 12px;
+    color: #444444;
+    font-weight: 400;
+    text-transform: capitalize;
+  }
+  .navbar-section ul li a {
+    text-decoration: none;
+    color: #fafafa;
+    font-size: 10px;
+    transition: 0.3s ease-in-out;
+    padding: 11px 8px;
+    position: relative;
+    top: 0px;
+  }
 }

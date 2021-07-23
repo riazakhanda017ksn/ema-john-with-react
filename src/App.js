@@ -8,7 +8,7 @@ import NotFound from "./component/NotFound/NotFound";
 import ProductDetails from "./component/ProductDetails/ProductDetails";
 import { createContext, useState } from "react";
 import Login from "./component/Login/Login";
-import PrivateRoute from "../src/component/PrivateRoute/PrivateRoute";
+import PrivateRoute from "./component/PrivateRoute/PrivateRoute";
 export const UserContext = createContext();
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
@@ -19,12 +19,12 @@ function App() {
         {/* <h1>hello{loggedInUser.email}</h1>
         {console.log(";lkj", loggedInUser.email)} */}
         <Switch>
-          <PrivateRoute path="/shop">
+          <Route path="/shop">
             <Shop></Shop>
-          </PrivateRoute>
-          <Route path="/review">
-            <Review></Review>
           </Route>
+          <PrivateRoute path="/review">
+            <Review></Review>
+          </PrivateRoute>
           <Route path="/inventory">
             <Inventory></Inventory>
           </Route>
