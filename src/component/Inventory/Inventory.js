@@ -1,9 +1,26 @@
 import React from "react";
-
+import "./Inventory.css";
+import fakeData from "../../resource/ema-john-simple-resources-master/ema-john-simple-resources-master/fakeData";
 const Inventory = () => {
+  const handleAllProducts = () => {
+    console.log("handleAllProducts", handleAllProducts);
+    fetch("http://localhost:5000/addProduct", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(fakeData),
+    }).then((result) => {
+      if (result) {
+        alert("data has been uploaded");
+      } else {
+        alert("sorry you are failed to upload product");
+      }
+    });
+  };
   return (
-    <div className="text-center">
-      <h1>this is inventory</h1>
+    <div className="the-main-div-section-for-admin">
+      <div className="text-center button-customize">
+        <button onClick={handleAllProducts}>Add Products</button>
+      </div>
     </div>
   );
 };

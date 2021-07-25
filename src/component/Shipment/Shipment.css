@@ -1,0 +1,55 @@
+.form-for-client-information input {
+  width: 100%;
+  outline: none;
+  margin-top: 26px;
+  padding: 12px 11px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+.form-for-client-information input:focus {
+  width: 100%;
+  outline: none;
+  margin-top: 26px;
+  padding: 12px 11px;
+  border: 1px solid rgb(255, 180, 17);
+  border-radius: 3px;
+  background: rgba(182, 182, 255, 0.178);
+}
+.form-for-client-information button {
+  display: block;
+  margin: 26px 0;
+  outline: none;
+  padding: 14px 69px;
+  color: #dc9215ed;
+  background: none;
+  border: 2px solid #dc9215ed;
+  border-radius: 3px;
+  transition: 0.3s ease-in-out;
+}
+.form-for-client-information button:hover {
+  display: block;
+  margin: 26px 0;
+  outline: none;
+  padding: 14px 69px;
+  color: #f8f8f8ed;
+  background: #dc9215ed;
+  border: 2px solid #dc9215ed;
+  border-radius: 1px;
+}
+.caption-for-shipment {
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 36px;
+}
+.caption-for-shipment h2 {
+  font-size: 32px;
+  font-weight: 700;
+  padding: 5px;
+}
+.caption-for-shipment p {
+  width: 70%;
+  margin: 0 auto;
+  color: #767676;
+  font-weight: 400;
+  line-height: 29px;
+}

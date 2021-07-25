@@ -154,81 +154,85 @@ const Login = () => {
     <>
       <div className="row">
         <div className="col-lg-6">
-          <div className="email-with-password">
-            <div className="new-user px-3">
-              {newUser ? (
-                <h3>Create An Account</h3>
-              ) : (
-                <h3 className="position-need">Log In</h3>
-              )}
-            </div>
-            <form onSubmit={handleSubmit}>
-              {newUser && (
+          <div className="need-bg">
+            <div className="email-with-password">
+              <div className="new-user px-3">
+                {newUser ? (
+                  <h3>Create An Account</h3>
+                ) : (
+                  <h3 className="position-need">Log In</h3>
+                )}
+              </div>
+              <form onSubmit={handleSubmit}>
+                {newUser && (
+                  <input
+                    type="text"
+                    name="name"
+                    onBlur={handleBlur}
+                    onFocus={handleBlur}
+                    placeholder="Your Name"
+                    required
+                  />
+                )}
+                <br />
                 <input
-                  type="text"
-                  name="name"
+                  type="email"
+                  name="email"
                   onBlur={handleBlur}
                   onFocus={handleBlur}
-                  placeholder="Your Name"
+                  placeholder="Email"
                   required
                 />
-              )}
-              <br />
-              <input
-                type="email"
-                name="email"
-                onBlur={handleBlur}
-                onFocus={handleBlur}
-                placeholder="Email"
-                required
-              />
-              <br />
-              <input
-                type="password"
-                name="password"
-                onBlur={handleBlur}
-                placeholder="Password"
-                required
-              />
-              <br />
-              {newUser && (
+                <br />
                 <input
                   type="password"
-                  name="confirm_password"
+                  name="password"
                   onBlur={handleBlur}
-                  placeholder="Confirm Password"
+                  placeholder="Password"
                   required
                 />
-              )}
-              <br />
+                <br />
+                {newUser && (
+                  <input
+                    type="password"
+                    name="confirm_password"
+                    onBlur={handleBlur}
+                    placeholder="Confirm Password"
+                    required
+                  />
+                )}
+                <br />
 
-              <button type="submit">{newUser ? "Sign up" : "Sign In"}</button>
-            </form>
-            {newUser ? (
-              <div className="need-flex">
-                <div className="caption">
-                  <p> already Have an Account</p>
+                <button type="submit">{newUser ? "Sign up" : "Sign In"}</button>
+              </form>
+              {newUser ? (
+                <div className="need-flex">
+                  <div className="caption">
+                    <p> already Have an Account</p>
+                  </div>
+                  <div className="create-an-account">
+                    <p onClick={() => setNewUser(!newUser)}>Log In </p>
+                  </div>
                 </div>
-                <div className="create-an-account">
-                  <p onClick={() => setNewUser(!newUser)}>Log In </p>
+              ) : (
+                <div className="need-flex">
+                  <div className="caption">
+                    <p>If you are new to the site </p>
+                  </div>
+                  <div className="create-an-account">
+                    <p onClick={() => setNewUser(!newUser)}>
+                      Create An Account
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ) : (
-              <div className="need-flex">
-                <div className="caption">
-                  <p>If you are new to the site </p>
-                </div>
-                <div className="create-an-account">
-                  <p onClick={() => setNewUser(!newUser)}>Create An Account</p>
-                </div>
-              </div>
-            )}
-            <p style={{ color: "red" }}>{user.error}</p>
-            {user.success && (
-              <p style={{ color: "green" }}>
-                User {newUser ? "created" : "Logged In"} successfully
-              </p>
-            )}
+              )}
+              <p style={{ color: "red" }}>{user.error}</p>
+              {user.success && (
+                <p style={{ color: "green" }}>
+                  User {newUser ? "created" : "Logged In"} successfully
+                </p>
+              )}
+            </div>
           </div>
         </div>
         <div className="col-lg-6">

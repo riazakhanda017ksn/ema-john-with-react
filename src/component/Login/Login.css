@@ -15,6 +15,23 @@
   width: 100%;
   height: 100%;
 }
+/* .need-bg {
+  background: url(/static/media/freestocks-_3Q3tsJ01nc-unsplash.f17c9378.jpg) no-repeat;
+  background-size: cover;
+  padding: 56px 0;
+  background-position: center 40%;
+  position: relative;
+  text-align: center;
+}
+.need-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(45deg, #d41655, #1307074f) !important;
+  width: 100%;
+  height: 100%;
+} */
 /* .google-sign-in button {
   position: relative;
 }
@@ -87,6 +104,8 @@
   padding-left: 43px;
   padding: 124px 0;
   margin: 0 38px;
+  position: relative;
+  top: 138px;
 }
 .email-with-password input {
   margin-top: 20px;
@@ -210,5 +229,13 @@
     padding: 11px 8px;
     position: relative;
     top: 0px;
+  }
+
+  .email-with-password {
+    padding-left: 43px;
+    padding: 124px 0;
+    margin: 0 38px;
+    position: relative;
+    top: 0px !important;
   }
 }

@@ -12,22 +12,38 @@ import {
 import { Link } from "react-router-dom";
 
 const Shop = () => {
-  const first10 = fakeData.slice(0, 10);
-  const [products, setProducts] = useState(first10);
+  const [productItems, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
 
   ///data-load-from-server
   useEffect(() => {
+    fetch("http://localhost:5000/products")
+      .then((res) => res.json())
+      .then((data) => setProducts(data));
+  }, []);
+  ////=================>
+  console.log("our own data", productItems);
+  useEffect(() => {
     const saveCart = getDatabaseCart();
     const productKeys = Object.keys(saveCart);
-    const previousCart = productKeys.map((existingKey) => {
-      const products = fakeData.find((pd) => pd.key === existingKey);
-      // console.log(existingKey, saveCart[existingKey]);
-      products.quantity = saveCart[existingKey];
-      return products;
-    });
-    setCart(previousCart);
-  }, [0]);
+    fetch("http://localhost:5000/productsByKeys", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(productKeys),
+    })
+      .then((res) => res.json())
+      .then((data) => setCart(data));
+    // console.log("productKeys", productKeys);
+    // if (productItems.length > 0) {
+    //   const previousCart = productKeys.map((existingKey) => {
+    //     const products = productItems.find((pd) => pd.key === existingKey);
+    //     // console.log(existingKey, saveCart[existingKey]);
+    //     products.quantity = saveCart[existingKey];
+    //     return products;
+    //   });
+    //   setCart(previousCart);
+    // }
+  }, []);
   const handleProduct = (product) => {
     let toBeAdded = product.key;
     const sameProduct = cart.find((pd) => pd.key === toBeAdded);
@@ -67,7 +83,7 @@ const Shop = () => {
       </div>
       <div className="shop-container ">
         <div className="products-items">
-          {products.map((pd) => (
+          {productItems.map((pd) => (
             <Products
               key={pd.key}
               showAddToCart={true}

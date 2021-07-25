@@ -3,39 +3,44 @@ import Cart from "../Cart/Cart";
 import happyImage from "../../resource/ema-john-simple-resources-master/ema-john-simple-resources-master/images/giphy.gif";
 import {
   getDatabaseCart,
-  processOrder,
   removeFromDatabaseCart,
 } from "../../resource/ema-john-simple-resources-master/ema-john-simple-resources-master/utilities/databaseManager";
-import fakeData from "../../resource/ema-john-simple-resources-master/ema-john-simple-resources-master/fakeData";
 import ReviewItem from "../ReviewItem/ReviewItem";
+import { useHistory } from "react-router-dom";
 const Review = () => {
   const [cart, setCart] = useState([]);
 
   const handleRemoveCart = (productKey) => {
     const newCart = cart.filter((pd) => pd.key !== productKey);
-    removeFromDatabaseCart(productKey);
     setCart(newCart);
+    removeFromDatabaseCart(productKey);
   };
   useEffect(() => {
     const savedCart = getDatabaseCart();
     const productKeys = Object.keys(savedCart);
-    const cartProduct = productKeys.map((key) => {
-      const product = fakeData.find((pd) => pd.key === key);
-      console.log("product", product);
-      product.quantity = savedCart[key];
-      return product;
-    });
-    setCart(cartProduct);
+    fetch("http://localhost:5000/productKeys", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(productKeys),
+    })
+      .then((res) => res.json())
+      .then((data) => setCart(data));
+    // const cartProduct = productKeys.map((key) => {
+    //   const product = fakeData.find((pd) => pd.key === key);
+    //   console.log("product", product);
+    //   product.quantity = savedCart[key];
+    //   return product;
+    // });
+    // setCart(cartProduct);
   }, []);
 
   /// show img
   const [orderPlaced, setOrderPlaced] = useState(false);
-  const handlePlaceOrder = () => {
-    processOrder();
-    setCart([]);
-    setOrderPlaced(true);
+  const history = useHistory();
+  const handleProceedOrder = () => {
+    history.push("/shipment");
   };
-
+  console.log("handleProceedOrder", handleProceedOrder);
   let thankYou;
   if (orderPlaced) {
     thankYou = <img src={happyImage} alt="" />;
@@ -54,7 +59,7 @@ const Review = () => {
       </div>
       <div className="counter-section">
         <Cart cart={cart}>
-          <button className="custom" onClick={handlePlaceOrder}>
+          <button className="custom" onClick={handleProceedOrder}>
             {" "}
             Place Order
           </button>
