@@ -1,14 +1,17 @@
 import React, { useContext } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { UserContext } from "../../App";
 import {
   getDatabaseCart,
   processOrder,
 } from "../../resource/ema-john-simple-resources-master/ema-john-simple-resources-master/utilities/databaseManager";
+import ProcessPayment from "../ProcessPayment/ProcessPayment";
 import "./Shipment.css";
 
 const Shipment = () => {
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+  const [handlePaymentSuccess, setPaymentSuccess] = useState(null);
   const {
     register,
     handleSubmit,
@@ -16,11 +19,16 @@ const Shipment = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
+    setPaymentSuccess(data);
+  };
+
+  const handlePaymentSuccessItem = (paymentId) => {
     const savedCart = getDatabaseCart();
     const orderCompletion = {
       ...loggedInUser,
       product: savedCart,
-      Shipment: data,
+      Shipment: handlePaymentSuccess,
+      paymentId,
       date: new Date(),
     };
     fetch("http://localhost:5000/addOrder", {
@@ -47,7 +55,10 @@ const Shipment = () => {
       </p>
       <div className="row px-5">
         <div className="col-lg-6 mt-5">
-          <div className="form-for-client-information">
+          <div
+            style={{ display: handlePaymentSuccess ? "none" : "block" }}
+            className="form-for-client-information"
+          >
             <form onSubmit={handleSubmit(onSubmit)}>
               <input
                 {...register("name", { required: true })}
@@ -86,7 +97,27 @@ const Shipment = () => {
             </form>
           </div>
         </div>
-        <div className="col-lg-6"></div>
+        <div className="col-lg-6 mt-4 px-4">
+          <div
+            style={{ display: handlePaymentSuccess ? "block" : "none" }}
+            className="need-payment"
+          >
+            <div className="list-for-payment-rules text-left">
+              <h4>Rules of payment</h4>
+              <ul>
+                <li>Must buy a product</li>
+                <li>you should review your product</li>
+                <li>Provide your real address in shipment form</li>
+                <li>Without payment we never delivery any product</li>
+              </ul>
+            </div>
+            <div className="mt-5 pt-2">
+              <ProcessPayment
+                handlePayment={handlePaymentSuccessItem}
+              ></ProcessPayment>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

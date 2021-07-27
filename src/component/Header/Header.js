@@ -30,11 +30,7 @@ const Header = () => {
 
         <div className="signOut-section">
           <button onClick={() => setLoggedInUser({})}>
-            {loggedInUser?.email ? (
-              <Link>SingOut</Link>
-            ) : (
-              <Link to="/login">Sing In</Link>
-            )}
+            <Link>SingOut</Link>
           </button>
         </div>
       </div>

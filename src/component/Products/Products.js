@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 const Products = (props) => {
   console.log(props);
   const { name, img, price, stock, seller, key } = props.product;
-
   return (
     <div className="mb-3">
       <div className="row need-border">

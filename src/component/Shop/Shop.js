@@ -14,14 +14,18 @@ import { Link } from "react-router-dom";
 const Shop = () => {
   const [productItems, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
-
+  const [search, setSearch] = useState(" ");
   ///data-load-from-server
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("http://localhost:5000/products?search=" + search)
       .then((res) => res.json())
       .then((data) => setProducts(data));
-  }, []);
+  }, [search]);
   ////=================>
+  const handleSearch = (event) => {
+    setSearch(event.target.value);
+  };
+  ////
   console.log("our own data", productItems);
   useEffect(() => {
     const saveCart = getDatabaseCart();
@@ -67,9 +71,8 @@ const Shop = () => {
       <div className="search-product-section">
         <div className="need-margin">
           <input
+            onBlur={handleSearch}
             type="search"
-            name=""
-            id=""
             placeholder="type here to search"
           />
           <span>
