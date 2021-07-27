@@ -5,6 +5,7 @@ import Products from "../Products/Products";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import Cart from "../Cart/Cart";
+import gif from "../../img/tumblr_m4yjyjFVyq1qg6rkio1_500.gif";
 import {
   addToDatabaseCart,
   getDatabaseCart,
@@ -86,6 +87,11 @@ const Shop = () => {
       </div>
       <div className="shop-container ">
         <div className="products-items">
+          {productItems.length === 0 && (
+            <div className="img text-center">
+              <img src={gif} alt="" />
+            </div>
+          )}
           {productItems.map((pd) => (
             <Products
               key={pd.key}

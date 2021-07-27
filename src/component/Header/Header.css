@@ -81,6 +81,11 @@
     padding: 9px 0;
     margin-left: 10px;
   }
+  .signOut-section button a {
+    position: relative;
+    top: 9px;
+    font-size: 14px;
+  }
 }
 
 body {
@@ -99,14 +104,21 @@ p.counter {
   display: flex;
   justify-content: space-between;
 }
-.signOut-section button {
-  background: none;
+.signOut-section button a {
   border: none;
   padding: 2px;
   margin-top: 5px;
   padding-right: 28px;
-}
-.signOut-section button a {
   text-decoration: none;
   color: #fbb60b;
+}
+.signOut-section button {
+  color: #fbb60b;
+  background: none;
+  outline: none;
+  border: none;
+}
+.signOut-section button a {
+  position: relative;
+  top: 9px;
 }

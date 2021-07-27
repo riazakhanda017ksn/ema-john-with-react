@@ -1,11 +1,24 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import { UserContext } from "../../App";
 import logo from "../../resource/ema-john-simple-resources-master/ema-john-simple-resources-master/images/logo.png";
 import "./Header.css";
 
 const Header = () => {
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+  // const [error, setError] = useState("");
+  // const history = useHistory();
+
+  // const handleLogOut = async () => {
+  //   setError("");
+  //   try {
+  //     await loggedInUser();
+  //     history.push("/login");
+  //   } catch (error) {
+  //     setError("cannot logout");
+  //   }
+  // };
   return (
     <>
       <div className="logo-section">
@@ -30,7 +43,11 @@ const Header = () => {
 
         <div className="signOut-section">
           <button onClick={() => setLoggedInUser({})}>
-            <Link>SingOut</Link>
+            {loggedInUser?.email ? (
+              <Link>SingOut</Link>
+            ) : (
+              <Link to="/login">Sing In</Link>
+            )}
           </button>
         </div>
       </div>

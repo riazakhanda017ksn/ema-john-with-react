@@ -18,3 +18,9 @@
     border-right: 1px solid #ddd;
   }
 }
+@media screen and (max-width: 442px) {
+  .img img {
+    position: relative;
+    left: -68px;
+  }
+}
