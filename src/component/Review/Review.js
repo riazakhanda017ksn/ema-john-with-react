@@ -7,6 +7,7 @@ import {
 } from "../../resource/ema-john-simple-resources-master/ema-john-simple-resources-master/utilities/databaseManager";
 import ReviewItem from "../ReviewItem/ReviewItem";
 import { useHistory } from "react-router-dom";
+import fakeData from "../../resource/ema-john-simple-resources-master/ema-john-simple-resources-master/fakeData";
 const Review = () => {
   const [cart, setCart] = useState([]);
 
@@ -18,20 +19,20 @@ const Review = () => {
   useEffect(() => {
     const savedCart = getDatabaseCart();
     const productKeys = Object.keys(savedCart);
-    fetch("http://localhost:5000/productKeys", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(productKeys),
-    })
-      .then((res) => res.json())
-      .then((data) => setCart(data));
-    // const cartProduct = productKeys.map((key) => {
-    //   const product = fakeData.find((pd) => pd.key === key);
-    //   console.log("product", product);
-    //   product.quantity = savedCart[key];
-    //   return product;
-    // });
-    // setCart(cartProduct);
+    // fetch("http://localhost:5000/productKeys", {
+    //   method: "POST",
+    //   headers: { "content-type": "application/json" },
+    //   body: JSON.stringify(productKeys),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => setCart(data));
+    const cartProduct = productKeys.map((key) => {
+      const product = fakeData.find((pd) => pd.key === key);
+      console.log("product", product);
+      product.quantity = savedCart[key];
+      return product;
+    });
+    setCart(cartProduct);
   }, []);
 
   /// show img
