@@ -1,0 +1,123 @@
+.table-of-manage-order {
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+}
+.table-of-manage-order {
+    background: #fafafa;
+}
+ table{
+     text-align: center;
+ }
+ thead {
+    background: #fff;
+    padding: 28px 0!important;
+}
+
+@media only screen and (max-width: 600px)  {
+    thead {
+        background: #fff;
+        padding: 28px 0!important;
+        font-size: 8px!important;
+    } 
+    tr {
+        
+        font-size: 8px!important;
+    } 
+    td {
+        
+        font-size: 8px!important;
+    } 
+
+    button.remove-admin {
+      border: none;
+      background: none;
+      text-decoration: underline;
+      color: #640000;
+      font-size: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      position: relative;
+      bottom: 2px;
+  }
+}
+
+tr:nth-child(2) {
+   background-color: white;
+  }
+tr:nth-child(4) {
+   background-color: white;
+  }
+tr:nth-child(6) {
+   background-color: white;
+  }
+tr:nth-child(8) {
+   background-color: white;
+  }
+tr:nth-child(10) {
+   background-color: white;
+  }
+tr:nth-child(12) {
+   background-color: white;
+  }
+tr:nth-child(14) {
+   background-color: white;
+  }
+tr:nth-child(16) {
+   background-color: white;
+  }
+tr:nth-child(18) {
+   background-color: white;
+  }
+  
+tr:nth-child(20) {
+   background-color: white;
+  }
+tr:nth-child(22) {
+   background-color: white;
+  }
+tr:nth-child(24) {
+   background-color: white;
+  }
+tr:nth-child(26) {
+   background-color: white;
+  }
+tr:nth-child(28) {
+   background-color: white;
+  }
+tr:nth-child(30) {
+   background-color: white;
+  }
+tr:nth-child(32) {
+   background-color: white;
+  }
+tr:nth-child(34) {
+   background-color: white;
+  }
+tr:nth-child(36) {
+   background-color: white;
+  }
+tr:nth-child(38) {
+   background-color: white;
+  }
+tr:nth-child(40) {
+   background-color: white;
+  }
+  
+  td {
+    color: #767676;
+    font-size: 13px;
+}
+
+
+button.remove-admin {
+  border: none;
+  background: none;
+  text-decoration: underline;
+  color: #640000;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  bottom: 2px;
+}

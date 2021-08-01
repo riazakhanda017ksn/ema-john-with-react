@@ -21,9 +21,9 @@ const Products = (props) => {
             </h4>
             <span>by: {seller}</span>
           </div>
-          <div className="need-flex">
+          <div>
             <div className="product-list-name-two">
-              <p>${price}</p>
+              <p>$ {price}</p>
               <small>only {stock} left in stock - order soon</small>
               {props.showAddToCart === true && (
                 <button onClick={() => props.handleProduct(props.product)}>

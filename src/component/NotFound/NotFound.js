@@ -1,11 +1,15 @@
 import React from "react";
+import "./NotFound.css";
+import error from "../../img/error.gif";
+import { Link } from "react-router-dom";
 
 const NotFound = () => {
   return (
-    <div>
-      <h2>Page not found</h2>
-      <h3>404 error !!</h3>
-    </div>
+    <Link to="/main-dashboard">
+      <div className="error text-center">
+        <img src={error} alt="" />
+      </div>
+    </Link>
   );
 };
 

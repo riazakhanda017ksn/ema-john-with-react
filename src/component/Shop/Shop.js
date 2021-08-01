@@ -11,8 +11,11 @@ import {
   getDatabaseCart,
 } from "../../resource/ema-john-simple-resources-master/ema-john-simple-resources-master/utilities/databaseManager";
 import { Link } from "react-router-dom";
+import { faAutoprefixer } from "@fortawesome/free-brands-svg-icons";
+import Pagination from "../Pagination/Pagination";
 
 const Shop = () => {
+  ///
   const [productItems, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
   const [search, setSearch] = useState(" ");
@@ -66,7 +69,18 @@ const Shop = () => {
     setCart(newCart);
     addToDatabaseCart(product.key, count);
   };
+  ////pagination-work
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postPerPage, setPostPerPage] = useState(5);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+  ///
+  const indexOfLastPost = currentPage * postPerPage;
+  const indexOfFirstPost = indexOfLastPost - postPerPage;
+  const productsSlice = productItems.slice(indexOfFirstPost, indexOfLastPost);
+
+  //
+  document.title = "Shop Now";
   return (
     <>
       <div className="search-product-section">
@@ -85,6 +99,7 @@ const Shop = () => {
           <p className="counter">{cart.length}</p>
         </div>
       </div>
+
       <div className="shop-container ">
         <div className="products-items">
           {productItems.length === 0 && (
@@ -92,7 +107,7 @@ const Shop = () => {
               <img src={gif} alt="" />
             </div>
           )}
-          {productItems.map((pd) => (
+          {productsSlice.map((pd) => (
             <Products
               key={pd.key}
               showAddToCart={true}
@@ -100,8 +115,14 @@ const Shop = () => {
               product={pd}
             ></Products>
           ))}
+          {/* /// */} <br />
+          <Pagination
+            postPerPage={postPerPage}
+            totalPosts={productItems.length}
+            paginate={paginate}
+          ></Pagination>
         </div>
-        <div className="counter-section">
+        <div className="counter-section mt-2">
           <Cart cart={cart}>
             <Link to="/review">
               <button className="custom">Review Order</button>{" "}

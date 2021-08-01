@@ -36,7 +36,7 @@ const Cart = (props) => {
     <div className="need-perfect-position">
       <div className="text-center order-caption ">
         <h5>Order Summary</h5>
-        <p>Items ordered:{props.cart.length}</p>
+        <p>Items ordered: {props.cart.length}</p>
       </div>
       <div className="pricing-academy">
         <div className="the-list-of-price-name">

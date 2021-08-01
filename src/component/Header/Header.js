@@ -35,7 +35,7 @@ const Header = () => {
                 <Link to="/review">Order Review</Link>
               </li>
               <li>
-                <Link to="/inventory">Manage Inventory</Link>
+                <Link to="/dashboard">Dashboard</Link>
               </li>
             </ul>
           </div>

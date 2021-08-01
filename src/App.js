@@ -10,6 +10,12 @@ import { createContext, useState } from "react";
 import Login from "./component/Login/Login";
 import PrivateRoute from "./component/PrivateRoute/PrivateRoute";
 import Shipment from "./component/Shipment/Shipment";
+import Dashboard from "./component/Dashboard/Dashboard";
+import MainDashboard from "./component/MainDashboard/MainDashboard";
+import OrderManagement from "./component/OrderManagement/OrderManagement";
+import OwnOrder from "./component/OwnOrder/OwnOrder";
+import Admin from "./component/Admin/Admin";
+import ShowAdmin from "./component/ShowAdmin/ShowAdmin";
 export const UserContext = createContext();
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
@@ -29,9 +35,27 @@ function App() {
           <PrivateRoute path="/inventory">
             <Inventory></Inventory>
           </PrivateRoute>
+          <Route path="/dashboard">
+            <Dashboard></Dashboard>
+          </Route>
+          <PrivateRoute path="/main-dashboard">
+            <MainDashboard></MainDashboard>
+          </PrivateRoute>
+          <PrivateRoute path="/own-order">
+            <OwnOrder></OwnOrder>
+          </PrivateRoute>
+          <PrivateRoute path="/add-Admin">
+            <Admin></Admin>
+          </PrivateRoute>
+          <PrivateRoute path="/whoAdmin">
+            <ShowAdmin></ShowAdmin>
+          </PrivateRoute>
           <PrivateRoute path="/shipment">
             <Shipment></Shipment>
           </PrivateRoute>
+          <Route path="/order-management">
+            <OrderManagement></OrderManagement>
+          </Route>
           <Route exact path="/">
             <Shop></Shop>
           </Route>

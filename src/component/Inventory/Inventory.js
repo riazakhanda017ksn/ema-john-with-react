@@ -2,9 +2,10 @@ import React from "react";
 import "./Inventory.css";
 import fakeData from "../../resource/ema-john-simple-resources-master/ema-john-simple-resources-master/fakeData";
 const Inventory = () => {
+  document.title = "Add Product";
   const handleAllProducts = () => {
     console.log("handleAllProducts", handleAllProducts);
-    fetch("http://localhost:5000/addProduct", {
+    fetch("http://localhost:5000/", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(fakeData),
@@ -12,7 +13,7 @@ const Inventory = () => {
       if (result) {
         alert("data has been uploaded");
       } else {
-        alert("sorry you are failed to upload product");
+        alert("Sorry Product has been uploaded, You cant add new product");
       }
     });
   };

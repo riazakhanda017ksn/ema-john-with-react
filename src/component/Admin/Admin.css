@@ -1,0 +1,44 @@
+.add-admin img {
+    height: 460px;
+}
+
+.form-part input {
+    width: 88%;
+    padding: 14px;
+    margin-top: 11px;
+    border: 1px solid #aba2a2;
+    border-radius: 2px;   
+    outline: none;
+    transition: ease-in-out;
+
+}
+.form-part input:hover{
+    border: 1px solid #D268CC;
+
+}
+.form-part input:focus{
+    border: 1px solid #D268CC;
+
+}
+
+
+.form-part button {
+    padding: 12px 38px;
+    margin: 12px 0;
+    background: #767676;
+    border-radius: 3px;
+    border: 1px solid #767676;
+    color: #fff;
+    transform-origin: top center;
+    transition: .3s ease-in-out;
+}
+.form-part button:hover {
+    padding: 12px 38px;
+    margin: 12px 0;
+    background: #DE87D8;
+    border-radius: 3px;
+    border: 1px solid #DE87D8;
+    color: #fff;
+    transform-origin: top center;
+    transition: .3s ease-in-out;
+}

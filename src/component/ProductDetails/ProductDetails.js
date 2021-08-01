@@ -1,28 +1,34 @@
-import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import fakeData from "../../resource/ema-john-simple-resources-master/ema-john-simple-resources-master/fakeData";
-import Products from "../Products/Products";
-import "./ProductDetails.css";
-const ProductDetails = () => {
+import Products from "../../component/Products/Products";
+import img from "../../img/tumblr_m4yjyjFVyq1qg6rkio1_500.gif";
+
+const ProductDetail = () => {
   const { productKey } = useParams();
-  const [product, setProducts] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [product, setProduct] = useState({});
+  document.title = "Product Details";
+
   useEffect(() => {
-    fetch("http://localhost:5000/products" + productKey)
+    fetch("http://localhost:5000/product/" + productKey)
       .then((res) => res.json())
-      .then((data) => setProducts(data));
+      .then((data) => {
+        setProduct(data);
+        setLoading(false);
+      });
   }, [productKey]);
-  // const product = products.find((pd) => pd.key === productKey);
+
   return (
     <div>
-      <h6 className="text-left py-3 px-1">
-        {" "}
-        Yours {productKey} Product Details Here
-      </h6>
-      <Products showAddToCart={false} product={product}></Products>
+      {loading ? (
+        <div className="img text-center">
+          <img src={img} alt="" />
+        </div>
+      ) : (
+        <Products showAddToCart={false} product={product}></Products>
+      )}
     </div>
   );
 };
 
-export default ProductDetails;
+export default ProductDetail;

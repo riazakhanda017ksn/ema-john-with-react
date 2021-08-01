@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import "./ReviewItem.css";
 
 const ReviewItem = (props) => {
-  //   console.log("yours props", props);
+  console.log("yours props", props);
   const { quantity, name, img, key, price } = props.product;
+
   return (
     <div className="row need-border">
       <div className="col-lg-3">

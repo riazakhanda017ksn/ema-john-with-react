@@ -1,0 +1,50 @@
+.menu ul{position: relative;}
+ul.status-meanu ul {
+    position: absolute;
+    top: 270%;
+    left: -79px;
+    width: 150px;
+    height: 0;
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: ease-in .4s;
+    transform-origin: top center;
+    cursor: pointer;
+    padding: 10px 0;
+}
+    ul.status-meanu ul li {
+        background: #7e7d7d;
+        padding: 6px 0;
+        cursor: pointer;
+    }
+    .status-meanu ul li a {
+        cursor: pointer;
+        font-weight: 500;
+        transition: .3s ease-in-out;
+    }
+    .status-meanu ul li a:hover {
+        text-decoration: underline!important;
+    }
+
+    ul.status-meanu ul li a {
+        cursor: pointer;
+    }
+
+ul.status-meanu li:hover ul{visibility:visible;opacity:1;top:195%;
+color:#fff
+}
+
+.menu ul {
+    position: relative;
+    list-style: none;
+    cursor: pointer;
+}
+ul.status-meanu li {
+    position: relative;
+    top: 1px;
+    font-size: 12px;
+    cursor: pointer;
+}

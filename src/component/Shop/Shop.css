@@ -17,10 +17,101 @@
     margin-right: 15px;
     border-right: 1px solid #ddd;
   }
+  .text-center.order-caption p {
+    font-weight: 400;
+    color: #313131cf;
+    font-size: 15px;
+    position: relative;
+    right:4px!important;
+  }
+  .pagination {
+    position: relative;
+    left: 1px!important;
+}
 }
 @media screen and (max-width: 442px) {
   .img img {
     position: relative;
     left: -68px;
   }
+  .text-center.order-caption p {
+    font-weight: 400;
+    color: #313131cf;
+    font-size: 15px;
+    position: relative;
+    right:4px!important;
+  }
+  .pagination {
+    position: relative;
+    left: 1px!important;
+}
+}
+
+.products-list-name a {
+  text-decoration: none;
+  line-height: 31px;
+  color: black;
+  font-weight: 500;
+}
+.products-list-name span {
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.product-list-name-two p {
+  color: #d29705;
+}
+.product-list-name-two small {
+  font-size: 14px;
+  font-weight: 500;
+  color: #565656;
+}
+
+
+.order-caption h5 {
+  position: relative;
+  right: 5px;
+}
+.text-center.order-caption p {
+  font-weight: 400;
+  color: #313131cf;
+  font-size: 15px;
+  position: relative;
+  right: 20px;
+}
+
+.pagination {
+  display: inline-block;
+  position: relative;
+  bottom: 16px;
+  right: 17px;
+}
+/* /pagination css */
+.pagination li {
+  list-style: none;
+  display: inline-block;
+  cursor: pointer;
+  margin: 5px 0;
+}
+
+.pagination li a {
+  display: inline-block;
+  width: 42px;
+  height: 42px;
+  line-height: 42px;
+  border: 1px solid #ddd;
+  text-align: center;
+  border-radius: 50%;
+  color: #767676;
+  transition: .3s ease-in-out;
+  margin-right: 15px;
+  text-decoration: none;
+}
+.pagination li a:hover {
+ background:#767676 ;
+ color: #fafafa!important;
+}
+.pagination li a:focus {
+ background:#767676 ;
+ color: #fafafa!important;
 }

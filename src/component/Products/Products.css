@@ -16,7 +16,8 @@
 
 .need-border {
   border-bottom: 1px solid #ddd;
-  margin-right: 6px;
+  margin-right: 0px;
+  padding: 22px 0;
 }
 .product-list-name-two button {
   display: block;
@@ -63,9 +64,9 @@
     outline: none;
     border: none;
     background: goldenrod;
-    padding: 5px 5px;
-    font-size: 7px;
+    padding: 5px 23px;
+    font-size: 9px;
     border-radius: 4px;
     border: 1px solid rgba(17, 17, 17, 0.329);
-  }
+}
 }
