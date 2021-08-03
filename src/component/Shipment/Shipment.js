@@ -33,7 +33,7 @@ const Shipment = () => {
       paymentId,
       date: new Date(),
     };
-    fetch("http://localhost:5000/addOrder", {
+    fetch("https://fathomless-springs-13781.herokuapp.com/addOrder", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(orderCompletion),

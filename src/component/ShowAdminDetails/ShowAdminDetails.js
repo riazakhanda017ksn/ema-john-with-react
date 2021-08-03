@@ -5,7 +5,7 @@ const ShowAdminDetails = (props) => {
   document.title = "Admin Section";
   const hidden = document.getElementById("delete");
   const deleteEvent = (id) => {
-    fetch(`http://localhost:5000/removeAdmin/${id}`, {
+    fetch(`https://fathomless-springs-13781.herokuapp.com/removeAdmin/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

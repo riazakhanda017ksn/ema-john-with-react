@@ -5,7 +5,7 @@ const Inventory = () => {
   document.title = "Add Product";
   const handleAllProducts = () => {
     console.log("handleAllProducts", handleAllProducts);
-    fetch("http://localhost:5000/", {
+    fetch("https://fathomless-springs-13781.herokuapp.com/", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(fakeData),

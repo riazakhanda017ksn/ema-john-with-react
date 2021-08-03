@@ -18,7 +18,7 @@ const Admin = () => {
       address: data.address,
     };
 
-    fetch("http://localhost:5000/addAdmin", {
+    fetch("https://fathomless-springs-13781.herokuapp.com/addAdmin", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(adminData),

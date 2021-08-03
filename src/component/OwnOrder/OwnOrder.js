@@ -9,7 +9,7 @@ const OwnOrder = () => {
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
   const [ownOrders, setOwnOrder] = useState([]);
   // useEffect(() => {
-  //   fetch("http://localhost:5000/ownOrder?email=" + loggedInUser.email)
+  //   fetch("https://fathomless-springs-13781.herokuapp.com/ownOrder?email=" + loggedInUser.email)
   //     .then((res) => res.json())
   //     .then((data) => {
   //       console.log("data", data);
@@ -18,7 +18,10 @@ const OwnOrder = () => {
   // }, [0]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/ownOrder?email=" + loggedInUser.email)
+    fetch(
+      "https://fathomless-springs-13781.herokuapp.com/ownOrder?email=" +
+        loggedInUser.email
+    )
       .then((res) => res.json())
       .then((data) => {
         setOwnOrder(data);

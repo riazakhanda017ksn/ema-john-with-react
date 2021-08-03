@@ -10,7 +10,9 @@ const ProductDetail = () => {
   document.title = "Product Details";
 
   useEffect(() => {
-    fetch("http://localhost:5000/product/" + productKey)
+    fetch(
+      "https://fathomless-springs-13781.herokuapp.com/product/" + productKey
+    )
       .then((res) => res.json())
       .then((data) => {
         setProduct(data);

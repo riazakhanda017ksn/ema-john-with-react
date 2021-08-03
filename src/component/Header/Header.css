@@ -64,6 +64,11 @@
   bottom: 2px;
 }
 
+@media screen and (max-width: 990px) {
+  .main-text{
+    display: none!important;
+  }
+}
 @media screen and (max-width: 440px) {
   .navbar-section ul li a {
     text-decoration: none;
@@ -86,6 +91,8 @@
     top: 9px;
     font-size: 14px;
   }
+
+ 
 }
 
 body {

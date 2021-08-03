@@ -6,7 +6,7 @@ import ShowAdminDetails from "../ShowAdminDetails/ShowAdminDetails";
 const ShowAdmin = () => {
   const [admin, setAdmin] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/admin")
+    fetch("https://fathomless-springs-13781.herokuapp.com/admin")
       .then((res) => res.json())
       .then((data) => setAdmin(data));
   }, []);

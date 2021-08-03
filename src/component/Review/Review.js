@@ -19,7 +19,7 @@ const Review = () => {
   useEffect(() => {
     const savedCart = getDatabaseCart();
     const productKeys = Object.keys(savedCart);
-    // fetch("http://localhost:5000/productKeys", {
+    // fetch("https://fathomless-springs-13781.herokuapp.com/productKeys", {
     //   method: "POST",
     //   headers: { "content-type": "application/json" },
     //   body: JSON.stringify(productKeys),

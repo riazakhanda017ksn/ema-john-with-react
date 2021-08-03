@@ -7,7 +7,7 @@ import "./OrderManagement.css";
 const OrderManagement = () => {
   const [showOrder, setShowOrder] = useState([0]);
   useEffect(() => {
-    fetch("http://localhost:5000/userOrder")
+    fetch("https://fathomless-springs-13781.herokuapp.com/userOrder")
       .then((res) => res.json())
       .then((data) => setShowOrder(data));
   }, [0]);

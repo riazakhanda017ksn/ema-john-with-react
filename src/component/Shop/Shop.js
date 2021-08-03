@@ -21,7 +21,9 @@ const Shop = () => {
   const [search, setSearch] = useState(" ");
   ///data-load-from-server
   useEffect(() => {
-    fetch("http://localhost:5000/products?search=" + search)
+    fetch(
+      "https://fathomless-springs-13781.herokuapp.com/products?search=" + search
+    )
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, [search]);
@@ -34,7 +36,7 @@ const Shop = () => {
   useEffect(() => {
     const saveCart = getDatabaseCart();
     const productKeys = Object.keys(saveCart);
-    fetch("http://localhost:5000/productsByKeys", {
+    fetch("https://fathomless-springs-13781.herokuapp.com/productsByKeys", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(productKeys),

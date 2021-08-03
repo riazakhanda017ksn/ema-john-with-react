@@ -8,7 +8,7 @@ const OrderManagementDetails = (props) => {
 
   //delete-order
   // const deleteOrder = id => {
-  //   fetch(`http://localhost:5000/deleteOrder/${id}`, {
+  //   fetch(`https://fathomless-springs-13781.herokuapp.com/deleteOrder/${id}`, {
   //     method: "DELETE",
   //   })
   //     .then((res) => res.json())
@@ -22,7 +22,7 @@ const OrderManagementDetails = (props) => {
   // };
 
   const deleteOrder = (id) => {
-    fetch(`http://localhost:5000/deleteOrder/${id}`, {
+    fetch(`https://fathomless-springs-13781.herokuapp.com/deleteOrder/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -35,7 +35,7 @@ const OrderManagementDetails = (props) => {
 
   ///
   const handleOrderStatus = (value, id) => {
-    fetch(`http://localhost:5000/update/${id}`, {
+    fetch(`https://fathomless-springs-13781.herokuapp.com/update/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
