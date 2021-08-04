@@ -33,7 +33,7 @@ const Admin = () => {
   return (
     <>
       <div className="caption-for-shipment py-5">
-        <h2>Welcome To Shipment Section</h2>
+        <h2>Welcome To Add Admin Section</h2>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis
           esse quam autem nobis architecto iure fuga nisi velit modi illo Lorem
